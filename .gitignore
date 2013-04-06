@@ -14,4 +14,9 @@
 /log/*.log
 /tmp
 
+#Ignore 
+config/initializers/rubillow_token.rb
+
 config/database.yml
+
+
