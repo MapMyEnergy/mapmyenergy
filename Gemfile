@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'haml'
-gem 'less-rails-bootstrap'
 gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
 
 group :production do
   gem 'pg'
