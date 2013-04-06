@@ -5,12 +5,26 @@ class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
   def index
+    debugger
     @homes = Home.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @homes }
     end
+
+  end
+
+
+  def zillows
+    @zillows=
+    property = Rubillow::HomeValuation.zestimate({ :zpid => '48749425' })
+    property.inspect
+    puts property
+    # if property.success?
+    #   puts property.price
+    # end
+
   end
 
   def landing
