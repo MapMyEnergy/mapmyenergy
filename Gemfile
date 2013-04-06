@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'haml'
+gem 'less-rails-bootstrap'
 gem 'jquery-rails'
 
 group :production do
@@ -9,6 +11,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'therubyracer'
 end
 
 # Gems used only for assets and not required
@@ -19,7 +22,3 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'therubyracer'
-gem 'less-rails-bootstrap'
-gem "haml"
