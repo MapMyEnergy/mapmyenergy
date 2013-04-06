@@ -1,4 +1,6 @@
-%form.form-inline
+%form.form-horizontal
   %fieldset
-    <input type="text" name="q" value="" placeholder="Enter your address"/>
+    %input.full-width{ :type => "text", :name => "q", :value => "", :placeholder => "Enter your address" }
     %button.btn{ :type => "submit" } Go
+
+#map-canvas
