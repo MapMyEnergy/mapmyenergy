@@ -13,6 +13,9 @@ class HomesController < ApplicationController
     end
   end
 
+  def landing
+  end
+
   # GET /homes/1
   # GET /homes/1.json
   def show

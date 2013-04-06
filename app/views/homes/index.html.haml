@@ -1,0 +1,11 @@
+- content_for :head do
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCDFyoPTNVguoCUAfVTVZH09FKJAuzJJkw&sensor=false"
+  :javascript
+    google.maps.event.addDomListener(window, 'load', MME.utils.init)
+
+%form.form-horizontal
+  %fieldset
+    %input.full-width{ :type => "text", :name => "q", :value => "#{ params[:q] }", :placeholder => "Enter your address" }
+    %button.btn{ :type => "submit" } Go
+
+#map-canvas

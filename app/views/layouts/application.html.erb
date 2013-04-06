@@ -14,10 +14,8 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCDFyoPTNVguoCUAfVTVZH09FKJAuzJJkw&sensor=false" %>
-    <script type="text/javascript">
-      google.maps.event.addDomListener(window, 'load', MME.utils.init)
-    </script>
+
+    <%= yield :head %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->

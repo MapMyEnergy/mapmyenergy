@@ -1,7 +1,7 @@
 Mapmyenergy::Application.routes.draw do
   resources :homes
 
-  root :to => 'homes#dashboard'
+  root :to => 'homes#landing'
 
 
   # The priority is based upon order of creation:
