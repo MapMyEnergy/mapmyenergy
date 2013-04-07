@@ -43,6 +43,9 @@ root.MME = do ( module, $ ) ->
 
     codeAddress()
 
+    $(document).on 'click', '[data-address]', ->
+      $('#modal-performance h3').text $(@).data('address')
+
   self.openInfoWindow = ( house ) ->
     @infowindow = new google.maps.InfoWindow content: house.markerContent
     @infowindow.open @map, house.g.marker
@@ -66,14 +69,19 @@ root.MME = do ( module, $ ) ->
     house.markerContent = """
       <div class="marker-content">
         <img src='/assets/house-preview.png'/>
-        <h1>ER #{ house.rating }</h1>
-        <a href="#modal-performance" data-toggle='modal'>Performance</a>
+        <h2>#{ house.address }</h2>
+        <h2>#{ Math.floor(Math.random()*5) + 2 } Beds, #{ Math.floor(Math.random()*4) + 1 } Bath</h2>
+        <h2>ZEstimate $#{ numberWithDelimiter house.zest }</h2>
+        <h2>Est. HERS Effect <font color='#{ getColorFromRating house.rating }'>#{ getEffectFromRating house.rating, house.zest }</font></h2>
+        <h2>HERS Energy Rating <font color='#{ getColorFromRating house.rating }'>#{ house.rating }</font></h2>
+        <a href="#modal-performance" data-toggle='modal' data-address='#{ house.address }'>Performance</a>
       </div>
     """
 
     google.maps.event.addListener house.g.marker, 'click', =>
       @infowindow.close() if @infowindow
-      @infowindow = new google.maps.InfoWindow content: house.markerContent
+      @infowindow = new google.maps.InfoWindow
+        content: house.markerContent
       @infowindow.open @map, house.g.marker
 
   addRandomHouses = ( num = 3 ) =>
@@ -120,6 +128,21 @@ root.MME = do ( module, $ ) ->
       when rating <= 65 then '/assets/home-green.png'
       when rating <= 100 then '/assets/home-yellow.png'
       else '/assets/home-red.png'
+
+  getColorFromRating = ( rating ) ->
+    color = switch
+      when rating <= 65 then 'green'
+      when rating <= 100 then '#B3B300' #yellow
+      else 'red'
+
+  getEffectFromRating = ( rating, zest ) ->
+    change = numberWithDelimiter(Math.floor(zest * Math.abs(rating - 100) * 0.0009 ))
+    effect = switch
+      when rating <= 100 then "+$#{change}"
+      else "-$#{change}"
+
+  numberWithDelimiter = ( num = '' ) ->
+    num.toString().replace /\B(?=(\d{3})+(?!\d))/g, ','
 
   module
 
