@@ -15,7 +15,8 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('#q').focus();
-    $('body').css('background', 'url(/assets/bg<%= rand(1..4) %>.jpg) no-repeat center center fixed');
+    rando = Math.floor(Math.random()*4) + 1
+    $('body').css('background', 'url(/assets/bg' + rando +'.jpg) no-repeat center center fixed');
   })
 </script>
 
