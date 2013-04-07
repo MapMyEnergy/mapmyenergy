@@ -3,9 +3,9 @@
   :javascript
     google.maps.event.addDomListener(window, 'load', MME.utils.init)
 
-%form.form-horizontal
+%form#frmAddress.form-horizontal
   %fieldset
-    %input.full-width{ :type => "text", :name => "q", :value => "#{ params[:q] }", :placeholder => "Enter your address" }
+    %input#q.full-width{ :type => "text", :name => "q", :value => "#{ params[:q] }", :placeholder => "Enter your address" }
     %button.btn{ :type => "submit" } Go
 
 #map-canvas
