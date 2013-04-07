@@ -15,7 +15,7 @@ class HomesController < ApplicationController
       homes.each do |home|
         z = home.zpid
         p = Rubillow::HomeValuation.zestimate({ :zpid => z })
-        j = { :street => p.address[:street], :zpid => z, :lat => p.address[:latitude], :lng => p.address[:longitude], :zest => p.price, :rating => house.hers_rating }
+        j = { :street => p.address[:street], :zpid => z, :lat => p.address[:latitude], :lng => p.address[:longitude], :zest => p.price, :rating => home.hers_rating } rescue {}
         a.push j
       end
       a
