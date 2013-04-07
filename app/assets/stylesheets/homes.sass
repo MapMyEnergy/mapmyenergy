@@ -48,7 +48,7 @@
 
   .form-search fieldset
     display: inline
-    margin-left: 50px
+    margin: 0 50px
     position: relative
 
   body
@@ -86,8 +86,21 @@
       display: none
 
     .form-search
-      text-align: center
       margin-top: 250px
+      text-align: center
+
+      .rawr
+        background: rgba(255, 255, 255, 0.3)
+        display: inline-block
+        +border-radius(4px)
+        padding: 20px
+
+        h2
+          color: #222
+          font-size: 24px
+          margin: 0 0 15px 0
+          font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+          font-weight: 300
 
     footer
       color: #999

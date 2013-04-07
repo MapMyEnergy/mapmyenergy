@@ -2,13 +2,16 @@
 
 <div class='form-wrapper'>
   <form id='frmAddress' class='form-search form-horizontal' action='/homes'>
-    <fieldset>
-      <div class="input-append">
-        <i class="icon-search"></i>
-        <input id='q' class='search-query input-xxlarge' type='text' name='q' value='<%= params[:q] %>' placeholder='Enter your address'/>
-        <button class='btn' type='submit'>Go</button>
-      </div>
-    </fieldset>
+    <div class='rawr'>
+      <h2>Find Your Property</h2>
+      <fieldset>
+        <div class="input-append">
+          <i class="icon-search"></i>
+          <input id='q' class='search-query input-xxlarge' type='text' name='q' value='<%= params[:q] %>' placeholder='Enter your address'/>
+          <button class='btn' type='submit'>Go</button>
+        </div>
+      </fieldset>
+    </div>
   </form>
 </div>
 
