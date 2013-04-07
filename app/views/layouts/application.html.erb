@@ -89,13 +89,63 @@
       </footer>
 
       <div id="modal-schedule-rating" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3 id="myModalLabel">Schedule HERS Rating </h3>
+          <h3>Schedule HERS Rating </h3>
         </div>
+        
         <div class="modal-body">
           <p>Please fill out the form and your local HERS rater will be in touch within 48 hours.</p>
         </div>
+
+        <form class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label" for="inputName">Name</label>
+            <div class="controls">
+              <input type="text" id="Name" placeholder="Mr. & Mrs. Zombie">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputStreetAddress">Street Address</label>
+            <div class="controls">
+              <input type="text" id="Street Address" placeholder="37 Willow Ave, #2">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputCity">City</label>
+            <div class="controls">
+              <input type="text" id="City" placeholder="Somerville">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputState">State</label>
+            <div class="controls">
+              <input type="text" id="State" placeholder="MA">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputPhone">Phone</label>
+            <div class="controls">
+              <input type="text" id="Phone" placeholder="617-567-0022">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="inputPhone">E-mail</label>
+            <div class="controls">
+              <input type="text" id="Email" placeholder="wombats@zombies.org">
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox"> Contact Me
+              </label>
+              <button type="submit" class="btn">Sign in</button>
+            </div>
+          </div>
+        </form>
+
         <div class="modal-footer">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
           <button class="btn btn-primary">Schedule Now</button>
