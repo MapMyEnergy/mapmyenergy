@@ -38,13 +38,14 @@
     left: 10px
     z-index: 100
 
-  .form-search
-    position: relative
+  .form-search fieldset
+    display: inline
     margin-left: 50px
+    position: relative
 
   body
-    overflow: auto
     margin: 0
+    overflow: auto
 
   footer
     margin: 20px 0 10px 0 !important
@@ -66,6 +67,18 @@
     right: 0
     left: 0
 
-  .sweet-bg
+  body.landing
     background: url(/assets/bg.jpg) no-repeat center center fixed
     +background-size(cover)
+
+    .navbar
+      display: none
+
+    .form-search
+      text-align: center
+      margin-top: 250px
+
+    footer
+      color: #999
+      font-size: 11px
+      margin-top: 200px !important

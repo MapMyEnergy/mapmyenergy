@@ -1,0 +1,22 @@
+<% content_for :nav do %>
+
+<div class='form-wrapper'>
+  <form id='frmAddress' class='form-search form-horizontal' action='/homes'>
+    <fieldset>
+      <div class="input-append">
+        <i class="icon-search"></i>
+        <input id='q' class='search-query input-xxlarge' type='text' name='q' value='<%= params[:q] %>' placeholder='Enter your address'/>
+        <button class='btn' type='submit'>Go</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#q').focus()
+    $('body').css('background', 'url(/assets/bg<%= rand(1..4) %>.jpg) no-repeat center center fixed');
+  })
+</script>
+
+<% end %>

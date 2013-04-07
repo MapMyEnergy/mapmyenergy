@@ -7,11 +7,9 @@ class HomesController < ApplicationController
   def index
     homes = Home.all
 
-    # zpid = [48749425, 56395012, 56327286, 56402744, 56540682, 56308076, 56408571, 56377387, 56436924, 56426063, 56377225, 56333485, 57470741, 56401419, 87730707, 56404397, 56327116, 87730221, 56268879]
-
     a = Array.new
 
-    properties = Rails.cache.fetch("cached_array", :expires_in => 1.hour) do
+    properties = Rails.cache.fetch("cached_array", :expires_in => 4.hours) do
       homes.each do |home|
         z = home.zpid
         p = Rubillow::HomeValuation.zestimate({ :zpid => z })
@@ -26,6 +24,7 @@ class HomesController < ApplicationController
   end
 
   def landing
+    @body_classes = 'landing'
   end
 
   # GET /homes/1

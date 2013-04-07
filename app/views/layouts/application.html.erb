@@ -37,35 +37,39 @@
     <!-- Size should be 32 x 32 pixels -->
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
   </head>
-  <body>
+  <body class="<%= @body_classes %>">
 
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="/"><img src="<%= asset_path('logo.png') %>" height="50" alt='MapMyEnergy'/></a>
-          <div class="container nav-collapse">
-            <ul class="nav">
-              <li>
-                <form id='frmAddress' class='form-search form-horizontal' action='/homes'>
-                  <fieldset>
-                    <div class="input-append">
-                      <i class="icon-search"></i>
-                      <input id='q' class='search-query input-xlarge' type='text' name='q' value='<%= params[:q] %>' placeholder='Enter your address'/>
-                      <button class='btn' type='submit'>Go</button>
-                    </div>
-                  </fieldset>
-                </form>
-              </li>
-              <li>
-                <form class='form-horizontal'>
-                <%= link_to 'Schedule HERS Rating', '#modal-schedule-rating', :class => 'btn btn-primary schedule-rating', :data => { :toggle => 'modal' } %>
-                </form>
-              </li>
-            </ul>
-          </div><!--/.nav-collapse -->
+    <% if content_for?(:nav) %>
+      <%= yield :nav %>
+    <% else %>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="brand" href="/"><img src="<%= asset_path('logo.png') %>" height="50" alt='MapMyEnergy'/></a>
+            <div class="container nav-collapse">
+              <ul class="nav">
+                <li>
+                  <form id='frmAddress' class='form-search form-horizontal' action='/homes'>
+                    <fieldset>
+                      <div class="input-append">
+                        <i class="icon-search"></i>
+                        <input id='q' class='search-query input-xlarge' type='text' name='q' value='<%= params[:q] %>' placeholder='Enter your address'/>
+                        <button class='btn' type='submit'>Go</button>
+                      </div>
+                    </fieldset>
+                  </form>
+                </li>
+                <li>
+                  <form class='form-horizontal'>
+                  <%= link_to 'Schedule HERS Rating', '#modal-schedule-rating', :class => 'btn btn-primary schedule-rating', :data => { :toggle => 'modal' } %>
+                  </form>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="container-fluid">
         <div class="row-fluid">
