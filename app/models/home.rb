@@ -1,3 +1,3 @@
 class Home < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :zpid, :hers_rating
 end

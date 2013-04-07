@@ -5,27 +5,23 @@ class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
   def index
-    zpid = [48749425, 56395012, 56327286, 56402744, 56540682, 56308076, 56408571, 56377387, 56436924, 56426063, 56377225, 56333485, 57470741, 56401419, 87730707, 56404397, 56327116, 87730221, 56268879]
+    homes = Home.all
+
+    # zpid = [48749425, 56395012, 56327286, 56402744, 56540682, 56308076, 56408571, 56377387, 56436924, 56426063, 56377225, 56333485, 57470741, 56401419, 87730707, 56404397, 56327116, 87730221, 56268879]
+
     a = Array.new
-    properties = Rails.cache.fetch("cached_array", :expires_in => 5.minutes) do
-      zpid.each do |z|
+
+    properties = Rails.cache.fetch("cached_array", :expires_in => 1.hour) do
+      homes.each do |home|
+        z = home.zpid
         p = Rubillow::HomeValuation.zestimate({ :zpid => z })
-        j = { :street => p.address[:street], :zpid => z, :lat => p.address[:latitude], :lng => p.address[:longitude], :zest => p.price }
+        j = { :street => p.address[:street], :zpid => z, :lat => p.address[:latitude], :lng => p.address[:longitude], :zest => p.price, :rating => house.hers_rating }
         a.push j
       end
       a
     end
-  
+
     @properties = properties.to_json
-
-    # debugger;1
-
-    @homes = Home.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @homes }
-    end
 
   end
 
