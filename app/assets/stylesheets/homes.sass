@@ -1,63 +1,71 @@
-@import compass/css3/background-size
+@import compass/css3
 
-.schedule-rating
-  margin-left: 400px !important
+#mme
 
-.nav
-  padding: 10px 12px
+  .schedule-rating
+    margin-left: 100px !important
 
-  .btn
-    margin: 0
+  .nav
+    padding: 10px 12px
 
-.navbar
-  margin-bottom: 0
+    .btn
+      margin: 0
 
-  .brand
-    margin: 0
+  .navbar
+    margin-bottom: 0
+    border-bottom: 1px solid #CCC
+
+    .navbar-inner
+      background: #8cc63e
+      +border-radius(0)
+
+    .brand
+      margin: 0
+      padding: 0
+
+      a:hover
+        background: none
+
+  .container-fluid
     padding: 0
 
-    a:hover
-      background: none
+  #q
+    padding: 4px 0 4px 28px
 
-.container-fluid
-  padding: 0
+  .icon-search
+    position: absolute
+    top: 7px
+    left: 10px
+    z-index: 100
 
-#q
-  padding: 4px 0 4px 28px
+  .form-search
+    position: relative
+    margin-left: 50px
 
-.icon-search
-  position: absolute
-  top: 7px
-  left: 10px
-  z-index: 100
+  body
+    overflow: auto
+    margin: 0
 
-.form-search
-  position: relative
+  footer
+    margin: 20px 0 10px 0 !important
+    text-align: center
 
-body
-  overflow: auto
-  margin: 0
+  .map-wrapper
+    height: 500px
+    width: 100%
+    position: relative
+    overflow: auto
 
-footer
-  margin: 20px 0 10px 0 !important
-  text-align: center
+  #map-canvas
+    // height: 100%
+    overflow: hidden
+    // width: 100%
+    position: absolute
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
 
-.map-wrapper
-  height: 500px
-  width: 100%
-  position: relative
-  overflow: auto
-
-#map-canvas
-  // height: 100%
-  overflow: hidden
-  // width: 100%
-  position: absolute
-  top: 0
-  bottom: 0
-  right: 0
-  left: 0
-
-.sweet-bg
-  background: url(/assets/bg.jpg) no-repeat center center fixed
-  +background-size(cover)
+  .sweet-bg
+    background: url(/assets/bg.jpg) no-repeat center center fixed
+    +background-size(cover)
