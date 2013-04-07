@@ -64,6 +64,11 @@
                   <%= link_to 'Schedule HERS Rating', '#modal-schedule-rating', :class => 'btn btn-primary schedule-rating', :data => { :toggle => 'modal' } %>
                   </form>
                 </li>
+                <li>
+                  <%= link_to 'http://www.resnet.us/' do %>
+                    <%= image_tag asset_path('ResnetHERSlogo.jpg'), :size => '64x32', :class => 'resnet' %>
+                  <% end %>
+                </li>
               </ul>
             </div><!--/.nav-collapse -->
           </div>
@@ -94,6 +99,19 @@
         <div class="modal-footer">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
           <button class="btn btn-primary">Schedule Now</button>
+        </div>
+      </div>
+
+      <div id="modal-performance" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3>Address</h3>
+        </div>
+        <div class="modal-body">
+          <%= image_tag(asset_path('24PrincetonPerformanceFacts.jpg')) %>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
         </div>
       </div>
 

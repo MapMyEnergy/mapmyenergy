@@ -12,12 +12,16 @@ root.MME = do ( module, $ ) ->
   self.init = =>
     console.log 'init'
 
-    centerLatLng = new google.maps.LatLng -34.397, 150.644
+    centerLatLng = new google.maps.LatLng 42.374158009074925, -71.11333154960937
 
     mapOptions =
       center: centerLatLng
-      zoom: 8
+      zoom: 12
       mapTypeId: google.maps.MapTypeId.ROADMAP # ROADMAP, SATELLITE, HYBRID, TERRAIN
+      mapTypeControl: true
+      overviewMapControl: true
+      scaleControl: true
+      zoomControl: true
 
     @map = new google.maps.Map $("#map-canvas").get(0), mapOptions
 
@@ -25,27 +29,9 @@ root.MME = do ( module, $ ) ->
 
     @infowindow = null
 
-    @houses = []
+    # google.maps.event.addListener @map, 'idle', addRandomHouses
 
-    google.maps.event.addListener @map, 'idle', addRandomHouses
-
-    # TODO:
-    # houses = [
-    #   lat: -34.397
-    #   lng: 150.644
-    #   rating: 0
-    # ,
-    #   lat: -34.497
-    #   lng: 150.544
-    #   rating: 85
-    # ,
-    #   lat: -34.597
-    #   lng: 150.344
-    #   rating: 150
-    # ]
-    # addRealHouses houses
-
-    console.log @houses
+    addRealHouses @properties
 
     google.maps.event.addListener @map, 'click', =>
       @infowindow.close() if @infowindow
@@ -64,6 +50,8 @@ root.MME = do ( module, $ ) ->
   # Private
 
   addHouseMarker = ( house ) ->
+    console.log 'addHouseMarker', house
+
     house.g = {}
 
     house.g.latLng = new google.maps.LatLng house.lat, house.lng
@@ -79,6 +67,7 @@ root.MME = do ( module, $ ) ->
       <div class="marker-content">
         <img src='/assets/house-preview.png'/>
         <h1>ER #{ house.rating }</h1>
+        <a href="#modal-performance" data-toggle='modal'>Performance</a>
       </div>
     """
 
@@ -86,8 +75,6 @@ root.MME = do ( module, $ ) ->
       @infowindow.close() if @infowindow
       @infowindow = new google.maps.InfoWindow content: house.markerContent
       @infowindow.open @map, house.g.marker
-
-    @houses.push house
 
   addRandomHouses = ( num = 3 ) =>
     llBounds = @map.getBounds()
@@ -124,7 +111,7 @@ root.MME = do ( module, $ ) ->
       @geocoder.geocode address: address, ( results, status ) ->
         if status == google.maps.GeocoderStatus.OK
           @map.setCenter results[0].geometry.location
-          addRandomHouses()
+          # addRandomHouses()
         else
           alert "Address not found: #{ status }"
 
