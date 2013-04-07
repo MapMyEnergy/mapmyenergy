@@ -1,6 +1,7 @@
 - content_for :head do
   = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCDFyoPTNVguoCUAfVTVZH09FKJAuzJJkw&sensor=false"
   :javascript
+    var properties = #{@properties}
     google.maps.event.addDomListener(window, 'load', MME.utils.init)
 
 %form#frmAddress.form-horizontal
