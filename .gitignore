@@ -14,9 +14,6 @@
 /log/*.log
 /tmp
 
-#Ignore Rubillow token
-config/initializers/rubillow_token.rb
-
 config/database.yml
 
 
