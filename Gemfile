@@ -9,7 +9,7 @@ gem 'twitter-bootstrap-rails'
 
 group :production do
   gem 'pg'
-  gem 'rack-google-analytics', :require => "rack/google-analytics"
+  gem 'rack-google-analytics', :require => 'rack/google-analytics'
 end
 
 group :development, :test do

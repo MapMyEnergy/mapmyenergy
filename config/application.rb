@@ -10,8 +10,10 @@ if defined?(Bundler)
 end
 
 module Mapmyenergy
+
+  class Application < Rails::Application
+    
     # Defunct Google Analytics - to be removed if the other option works
-  # class Application < Rails::Application
   #   if Rails.env == "production"
   #       config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-39979735-1")
   #   end
