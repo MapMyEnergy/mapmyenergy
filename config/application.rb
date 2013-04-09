@@ -13,11 +13,6 @@ module Mapmyenergy
 
   class Application < Rails::Application
     
-    # Defunct Google Analytics - to be removed if the other option works
-  #   if Rails.env == "production"
-  #       config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-39979735-1")
-  #   end
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

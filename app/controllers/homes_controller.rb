@@ -8,19 +8,18 @@ class HomesController < ApplicationController
     homes = Home.all
 
     a = Array.new
-
+    
     properties = Rails.cache.fetch("cached_array", :expires_in => 4.hours) do
       homes.each do |home|
         z = home.zpid
         p = Rubillow::HomeValuation.zestimate({ :zpid => z })
-        j = { :address => "#{p.address[:street]}, #{p.address[:city]}, #{p.address[:state]}", :zpid => z, :lat => p.address[:latitude], :lng => p.address[:longitude], :zest => p.price, :rating => home.hers_rating } rescue {}
+        j = { :address => "#{p.address[:street]}, #{p.address[:city]}, #{p.address[:state]}", 
+              :zpid => z, :lat => p.address[:latitude], :lng => p.address[:longitude], :zest => p.price, :rating => home.hers_rating } rescue {}
         a.push j
       end
       a
     end
-
     @properties = properties.to_json
-
   end
 
   def landing
