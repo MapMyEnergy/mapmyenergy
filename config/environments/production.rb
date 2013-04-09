@@ -1,6 +1,10 @@
 Mapmyenergy::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # Google Analytics
+  config.gem 'rack-google-analytics', :lib => 'rack/google-analytics'
+  config.middleware.use Rack::GoogleAnalytics, :tracker => 'UA-39979735-1'
+
   # Code is not reloaded between requests
   config.cache_classes = true
 
