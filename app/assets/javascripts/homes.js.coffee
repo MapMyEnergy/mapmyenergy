@@ -17,7 +17,7 @@ root.MME = do ( module, $ ) ->
     mapOptions =
       center: centerLatLng
       zoom: 12
-      mapTypeId: google.maps.MapTypeId.ROADMAP # ROADMAP, SATELLITE, HYBRID, TERRAIN
+      mapTypeId: google.maps.MapTypeId.HYBRID # ROADMAP, SATELLITE, HYBRID, TERRAIN
       mapTypeControl: true
       overviewMapControl: true
       scaleControl: true
@@ -32,6 +32,7 @@ root.MME = do ( module, $ ) ->
     # google.maps.event.addListener @map, 'idle', addRandomHouses
 
     addRealHouses @properties
+    addBunchOfRandoHouses()
 
     google.maps.event.addListener @map, 'click', =>
       @infowindow.close() if @infowindow
@@ -67,14 +68,15 @@ root.MME = do ( module, $ ) ->
     house.g.marker.setMap @map
 
     house.markerContent = """
-      <div class="marker-content">
+      <div class='marker-content'>
         <img src='/assets/house-preview.png'/>
         <h2>#{ house.address }</h2>
         <h2>#{ Math.floor(Math.random()*5) + 2 } Beds, #{ Math.floor(Math.random()*4) + 1 } Bath</h2>
         <h2>ZEstimate $#{ numberWithDelimiter house.zest }</h2>
         <h2>Est. HERS Effect <font color='#{ getColorFromRating house.rating }'>#{ getEffectFromRating house.rating, house.zest }</font></h2>
         <h2>HERS Energy Rating <font color='#{ getColorFromRating house.rating }'>#{ house.rating }</font></h2>
-        <a href="#modal-performance" data-toggle='modal' data-address='#{ house.address }'>Performance</a>
+        <a href='#modal-performance' class='btn' data-toggle='modal' data-address='#{ house.address }'>Performance</a>
+        <a href='sliders.html' class='btn'>Calculate Valuation</a>
       </div>
     """
 
@@ -84,8 +86,14 @@ root.MME = do ( module, $ ) ->
         content: house.markerContent
       @infowindow.open @map, house.g.marker
 
-  addRandomHouses = ( num = 3 ) =>
-    llBounds = @map.getBounds()
+  addBunchOfRandoHouses = ->
+    addRandomHouses(50)
+
+  addRandomHouses = ( num = 3, llBounds = null ) =>
+    ne = new google.maps.LatLng( 42.39814978123679, -71.11034402971649 )
+    sw = new google.maps.LatLng( 42.39418815624078, -71.1224139702835 )
+
+    llBounds = new google.maps.LatLngBounds( sw, ne )
 
     console.log 'llBounds', llBounds
 
@@ -107,6 +115,8 @@ root.MME = do ( module, $ ) ->
         lat: rndLat
         lng: rndLng
         rating: Math.floor(Math.random() * 200)
+        address: ''
+        zest: 100000 + Math.floor(Math.random() * 1000000)
 
   addRealHouses = ( houses ) ->
     $.map houses, ( house, i ) ->
